@@ -1,0 +1,78 @@
+<div class="w-full flex items-center justify-center p-3">
+  <div
+    class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 border bg-red-100 border-blue-800 p-5 rounded-lg shadow-lg"
+  >
+    <div
+      class="form flex flex-col items-center justify-center w-full"
+      [formGroup]="detailsForm"
+    >
+      <div class="p-3 text-center">
+        <h1 class="text-xl font-bold">Details Form</h1>
+      </div>
+
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="gender flex flex-col">
+          <label class="p-2 font-semibold"> Gender </label>
+          <p-select
+            formControlName="gender"
+            [options]="gender"
+            optionLabel="gender"
+            optionValue="code"
+            placeholder="Select a Gender"
+            class="w-full"
+          />
+        </div>
+
+        <div class="user flex flex-col">
+          <label class="p-2 font-semibold"> User </label>
+          <p-select
+            formControlName="userId"
+            [options]="allUsers"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select a User"
+            class="w-full"
+          />
+        </div>
+
+        <div class="description flex flex-col">
+          <label class="p-2 font-semibold"> Description </label>
+          <input
+            type="text"
+            placeholder="Description"
+            formControlName="description"
+            class="p-2 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div class="address flex flex-col">
+          <label class="p-2 font-semibold"> Address </label>
+          <input
+            type="text"
+            placeholder="Address"
+            formControlName="address"
+            class="p-2 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3 mt-5">
+        <button
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400 disabled:cursor-not-allowed"
+          (click)="addUserDetails()"
+          [disabled]="!detailsForm.valid"
+        >
+          Add
+        </button>
+        <button
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          (click)="backToRegister()"
+        >
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>
